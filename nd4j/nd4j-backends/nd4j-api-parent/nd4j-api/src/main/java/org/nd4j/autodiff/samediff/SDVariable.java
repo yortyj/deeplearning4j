@@ -409,6 +409,9 @@ public class SDVariable extends DifferentialFunction implements Serializable {
         return sameDiff.neq(name, this, other);
     }
 
+    public SDVariable mmul(SDVariable other){
+        return sameDiff.mmul(this, other);
+    }
 
     //scalars
 

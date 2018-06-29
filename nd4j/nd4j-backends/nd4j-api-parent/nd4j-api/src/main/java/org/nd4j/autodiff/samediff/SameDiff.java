@@ -648,7 +648,11 @@ public class SameDiff {
             }
         }
 
-
+        if(log.isTraceEnabled()){
+            long[] pShape = variableNameToShape.get(varName);
+            log.trace("Updated shape for variable \"{}\": previous shape {}, new shape {}", varName,
+                    (pShape == null ? "<not set>" : Arrays.toString(pShape)), Arrays.toString(shape));
+        }
         variableNameToShape.put(varName, shape);
     }
 
@@ -749,11 +753,7 @@ public class SameDiff {
 
         reverseArrayLookup.put(arr, variable);
         variableNameToArr.put(variable.getVarName(), arr);
-        if (!shapeAlreadyExistsForVarName(variable.getVarName()))
-            putShapeForVarName(variable.getVarName(), arr.shape());
-        else {
-            updateShapeForVarName(variable.getVarName(), arr.shape());
-        }
+        putOrUpdateShapeForVarName(variable.getVarName(), arr.shape(), true);
         // invalidate exec cache
         exec_cache = null;
 
