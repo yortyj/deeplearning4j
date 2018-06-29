@@ -680,7 +680,7 @@ public class SameDiff {
     }
 
     public void putOrUpdateShapeForVarName(String varName, @NonNull long[] shape, boolean clearArrayOnShapeMismatch){
-        if(variableNameToArr.containsKey(varName)){
+        if(variableNameToShape.containsKey(varName)){
             updateShapeForVarName(varName, shape, clearArrayOnShapeMismatch);
         } else {
             putShapeForVarName(varName, shape);
