@@ -116,7 +116,7 @@ TEST_F(VariableTests, Test_FlatVariableDataType_2) {
 }
 
 
-TEST_F(VariableTests, Test_FlatVariableDataType_3) {
+TEST_F(VariableTests, DISABLED_Test_FlatVariableDataType_3) {
     flatbuffers::FlatBufferBuilder builder(1024);
     NDArray<double> original('c', {5, 10});
     NDArray<float> floating('c', {5, 10});
